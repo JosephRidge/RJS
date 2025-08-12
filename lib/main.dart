@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mountainapp/pages/carousel/carousel.dart';
 import 'package:mountainapp/pages/home/home.dart';
 import 'package:mountainapp/pages/landing/mountsapp.dart';
 import 'package:mountainapp/pages/splash/splashpage.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,  
-      home: MountsApp()//SplashPage(),
+      home: CarouselPage()//MountsApp()//SplashPage(),
     );
   }
 }
