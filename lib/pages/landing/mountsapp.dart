@@ -1,87 +1,29 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mountainapp/main.dart';
-import 'package:mountainapp/models/app_bottom_bar_item.dart';
-import 'package:mountainapp/models/car.dart';
-import 'package:mountainapp/models/category.dart';
-import 'package:mountainapp/models/mount.dart';
-
-List<AppBottomBarItem> barItems = [
-  AppBottomBarItem(icon: Icons.home, label: 'Home', isSelected: true),
-  AppBottomBarItem(icon: Icons.explore, label: 'Explore', isSelected: false),
-  AppBottomBarItem(icon: Icons.turned_in_not, label: 'Tag', isSelected: false),
-  AppBottomBarItem(
-    icon: Icons.person_outline,
-    label: 'Profile',
-    isSelected: false,
-  ),
-];
-final List<MountModel> mountItems = [
-  MountModel(
-    path:
-        'https://sa.kapamilya.com/absnews/abscbnnews/media/2021/afp/01/17/20210116-mt-semeru-indonesia-ash-afp-s.jpg',
-    name: 'Mount Semeru',
-    description:
-        'Semeru, or Mount Semeru, is an active volcano in East Java, Indonesia. It is located in the subduction zone, where the Indo-Australia plate subducts under the Eurasia plate. It is the highest mountain on the island of Java.',
-    location: 'East Java',
-  ),
-  MountModel(
-    path:
-        'https://media-cdn.tripadvisor.com/media/photo-s/04/a5/6f/ce/dsc-5622jpg.jpg',
-    name: 'Mount Merbaru',
-    description:
-        'Mount Merbabu is a dormant stratovolcano in Central Java province on the Indonesian island of Java. The name Merbabu could be loosely translated as Mountain of Ash from the Javanese combined words; Meru means mountain and awu or abu means ash.',
-    location: 'Central Java',
-  ),
-  MountModel(
-    path:
-        'https://sa.kapamilya.com/absnews/abscbnnews/media/2021/afp/01/17/20210116-mt-semeru-indonesia-ash-afp-s.jpg',
-    name: 'Mauna Loa',
-    description:
-        'Mauna Loa is one of five volcanoes that form the Island of Hawaii in the U.S. state of Hawai in the Pacific Ocean. The largest subaerial volcano in both mass and volume, Mauna Loa has historically been considered the largest volcano on Earth, dwarfed only by Tamu Massif.',
-    location: 'Hawaii',
-  ),
-  MountModel(
-    path:
-        'https://cdn.images.express.co.uk/img/dynamic/78/590x/mount-vesuvius-1100807.jpg',
-    name: 'Mount Vesuvius',
-    description:
-        'Mount Vesuvius is a somma-stratovolcano located on the Gulf of Naples in Campania, Italy, about 9 km east of Naples and a short distance from the shore. It is one of several volcanoes which form the Campanian volcanic arc.',
-    location: 'Italy',
-  ),
-  MountModel(
-    path:
-        'https://sa.kapamilya.com/absnews/abscbnnews/media/2021/afp/01/17/20210116-mt-semeru-indonesia-ash-afp-s.jpg',
-    name: 'Mount Popocatépetl',
-    description:
-        'Popocatépetl is an active stratovolcano located in the states of Puebla, Morelos, and Mexico in central Mexico. It lies in the eastern half of the Trans-Mexican volcanic belt. At 5,426 m it is the second highest peak in Mexico, after Citlaltépetl at 5,636 m.',
-    location: 'Mexico',
-  ),
-];
-
-final List<CategoryModel> categories = [
-  CategoryModel(category: 'Mountain', icon: Icons.terrain),
-  CategoryModel(category: 'Forest', icon: Icons.park),
-  CategoryModel(category: 'Beach', icon: Icons.beach_access),
-  CategoryModel(category: 'Hiking', icon: Icons.directions_walk),
-];
+import 'package:mountainapp/data/models/app_bottom_bar_item.dart';
+import 'package:mountainapp/main.dart'; 
+import 'package:mountainapp/data/models/category.dart';
+import 'package:mountainapp/data/models/mount.dart';
+import 'package:mountainapp/pages/widgets/app_header.dart';
+import 'package:mountainapp/utility/constants.dart' as constants;
 
 class MountsApp extends StatelessWidget {
   const MountsApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        iconTheme: IconThemeData(color: mainColor),
-        title: Center(child: Icon(Icons.terrain, color: mainColor, size: 40)),
+        iconTheme: IconThemeData(color:  constants.mainColor),
+        title: Center(child: Icon(Icons.terrain, color:  constants.mainColor, size: 40)),
         actions: [SizedBox(width: 40, height: 40)],
       ),
       drawer: Drawer(
         child: Container(
           padding: EdgeInsets.all(30),
-          color: mainColor,
+          color:  constants.mainColor,
           alignment: Alignment.bottomLeft,
           child: Icon(Icons.terrain, color: Colors.white, size: 80),
         ),
@@ -94,47 +36,6 @@ class MountsApp extends StatelessWidget {
           AppMountListView(),
           AppCategoryList(),
           AppBottomBar(),
-        ],
-      ),
-    );
-  }
-}
-
-//  widgets
-class AppHeader extends StatelessWidget {
-  const AppHeader({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 30, right: 30, top: 30),
-      child: Row(
-        children: [
-          ClipOval(
-            child: Image.network(
-              "https://avatars.githubusercontent.com/u/5081804?v=4",
-              width: 50,
-              height: 50,
-              fit: BoxFit.cover,
-            ),
-          ),
-          SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Hello, Roman',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                'Good morning',
-                style: TextStyle(color: mainColor, fontSize: 12),
-              ),
-            ],
-          ),
         ],
       ),
     );
@@ -180,7 +81,7 @@ class AppSearch extends StatelessWidget {
                 width: 50,
                 height: 50,
                 decoration: BoxDecoration(
-                  color: mainColor,
+                  color: constants.mainColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Icon(Icons.tune, color: Colors.white),
@@ -201,9 +102,9 @@ class AppMountListView extends StatelessWidget {
     return Expanded(
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: mountItems.length,
+        itemCount: constants.mountItems.length,
         itemBuilder: (context, index) {
-          MountModel currentMount = mountItems[index];
+          MountModel currentMount = constants.mountItems[index];
           return Container(
             alignment: Alignment.bottomLeft,
             padding: EdgeInsets.all(20),
@@ -262,7 +163,7 @@ class AppCategoryList extends StatelessWidget {
                 Text(
                   'See More',
                   style: TextStyle(
-                    color: mainColor,
+                    color:  constants.mainColor,
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
@@ -275,9 +176,9 @@ class AppCategoryList extends StatelessWidget {
             margin: EdgeInsets.only(left: 10),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
+              itemCount: constants.categories.length,
               itemBuilder: (context, index) {
-                CategoryModel currentCategory = categories[index];
+                CategoryModel currentCategory = constants.categories[index];
                 return Container(
                   width: 100,
                   margin: EdgeInsets.only(top: 10, right: 10),
@@ -292,7 +193,7 @@ class AppCategoryList extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(currentCategory.icon, color: mainColor),
+                      Icon(currentCategory.icon, color:  constants.mainColor),
                       Text(
                         currentCategory.category!,
                         style: TextStyle(
@@ -337,8 +238,8 @@ class _AppBottomBarState extends State<AppBottomBar> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(barItems.length, (index) {
-          AppBottomBarItem currentBarItem = barItems[index];
+        children: List.generate(constants.barItems.length, (index) {
+          AppBottomBarItem currentBarItem =constants.barItems[index];
           Widget barItemWidget;
 
           if (currentBarItem.isSelected) {
@@ -346,7 +247,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
               padding: EdgeInsets.only(left: 15, top: 5, bottom: 5, right: 15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: mainColor,
+                color:  constants.mainColor,
               ),
               child: Row(
                 children: [
@@ -363,7 +264,7 @@ class _AppBottomBarState extends State<AppBottomBar> {
             barItemWidget = IconButton(
               onPressed: () {
                 setState(() {
-                  barItems.forEach((AppBottomBarItem item) {
+                  constants.barItems.forEach((AppBottomBarItem item) {
                     item.isSelected = item == currentBarItem;
                   });
                 });

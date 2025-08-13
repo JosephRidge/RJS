@@ -4,7 +4,6 @@ import 'package:mountainapp/pages/landing/mountsapp.dart';
 import 'package:mountainapp/pages/splash/splashpage.dart';
 
 
-final Color mainColor = Color(0xFFFF5656);
 
 void main() {
   runApp(const MyApp());

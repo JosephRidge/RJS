@@ -8,7 +8,9 @@ class MountModel {
   // constructor
   MountModel({
     this.path = '',
-     this.name = '', 
-     this.location = '',
-      this.description= ''});
+    this.name = '',
+    this.location = '',
+    this.description = '',
+  });
+
 }

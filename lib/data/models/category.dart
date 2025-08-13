@@ -4,5 +4,5 @@ class CategoryModel {
   String? category;
   IconData? icon;
 
-  CategoryModel({this.category , this.icon});
+  CategoryModel({this.category, this.icon});
 }
