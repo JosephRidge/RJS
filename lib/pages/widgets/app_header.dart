@@ -2,7 +2,8 @@ import 'package:mountainapp/utility/constants.dart' as constants;
 import 'package:flutter/material.dart';
 
 class AppHeader extends StatelessWidget {
-  const AppHeader({super.key});
+  AppHeader({super.key, required this.userProfilePic});
+  String userProfilePic;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class AppHeader extends StatelessWidget {
         children: [
           ClipOval(
             child: Image.network(
-              "https://avatars.githubusercontent.com/u/5081804?v=4",
+              userProfilePic,
               width: 50,
               height: 50,
               fit: BoxFit.cover,
@@ -31,7 +32,7 @@ class AppHeader extends StatelessWidget {
               ),
               Text(
                 'Good morning',
-                style: TextStyle(color:constants.mainColor, fontSize: 12),
+                style: TextStyle(color: constants.mainColor, fontSize: 12),
               ),
             ],
           ),

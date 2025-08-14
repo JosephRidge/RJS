@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mountainapp/main.dart';
 import 'package:mountainapp/pages/landing/mountsapp.dart';
+import 'package:mountainapp/utility/constants.dart' as constants;
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(
         context,
       ).push(MaterialPageRoute(builder: (context) => MountsApp()));
     });
-    
+
     return Container(
-      color: mainColor,
+      color: constants.mainColor,
       child: Stack(
         children: [
           /**
@@ -23,8 +22,10 @@ class SplashPage extends StatelessWidget {
            * allow us to positin our
            *  widget in a particular place on the page
            */
-          Align(// utility widget
-            child: Icon( // visual widget
+          Align(
+            // utility widget
+            child: Icon(
+              // visual widget
               Icons.terrain,
               color: Colors.white,
               size: 90,
@@ -35,10 +36,11 @@ class SplashPage extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(bottom: 80),
               child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(Colors.white),
+                color: Colors.white,
+                // valueColor: AlwaysStoppedAnimation(Colors.white),
+              ),
             ),
-            ),
-          )
+          ),
         ],
       ),
     );
