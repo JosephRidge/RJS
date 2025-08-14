@@ -7,6 +7,28 @@ import 'package:mountainapp/data/models/mount.dart';
 final Color mainColor = Color(0xFFFF5656);
 
 // constant widgets:
+Widget categoryCard(IconData icon, String categoryName ) {
+  return Container(
+    width: 100,
+    margin: EdgeInsets.only(top: 10, right: 10),
+    padding: EdgeInsets.all(10),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey.withOpacity(0.2) , width: 2),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: mainColor),
+        Text(
+          categoryName ,
+          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+        ),
+      ],
+    ),
+  );
+}
+
 AppBar appBar = AppBar(
   elevation: 0,
   backgroundColor: Colors.transparent,
